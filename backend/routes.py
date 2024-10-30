@@ -54,7 +54,7 @@ def get_picture_by_id(id):
         for picture in data:
             if picture['id'] == id:
                 return jsonify(picture), 200
-        return {"message":"ID not found."}, 404
+        return {"message":"picture not found."}, 404
     except NameError:
         return {"message":"Invalid ID!"}, 400
 
@@ -90,8 +90,8 @@ def update_picture(id):
         for index, picture in enumerate(data):
             if picture['id'] == id:
                 data[index].update(updated_picture) 
-                return jsonify(data[index]), 200
-        return {"message": "ID not found"}, 404
+                return jsonify(data[index]), 201
+        return {"message": "picture not found"}, 404
     except NameError:
         return {"message":"Invalid ID!"}, 400
 
@@ -107,6 +107,6 @@ def delete_picture(id):
             if picture['id'] == id:
                 data.remove(picture)
                 return '', 204
-        return {"message":"ID not found."}, 404
+        return {"message":"picture not found."}, 404
     except NameError:
         return {"message":"Invalid ID!"}, 400
